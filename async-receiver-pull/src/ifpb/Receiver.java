@@ -20,7 +20,8 @@ public class Receiver extends UnicastRemoteObject implements IReceiver {
 		//
 		System.out.println("Recebendo uma mensagem e tentando encaminhar para o server.");
 		//
-		Registry registry =  LocateRegistry.getRegistry(10992);
+//		Registry registry =  LocateRegistry.getRegistry(10992);
+		Registry registry =  LocateRegistry.getRegistry("async-serverapp", 10992);
 		try {
 			IServerApp serverApp = (IServerApp) registry.lookup("ServerApp");
 			MessageResult result = serverApp.print(msg);

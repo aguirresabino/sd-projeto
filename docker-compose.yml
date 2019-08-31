@@ -6,37 +6,47 @@ services:
     image: async-serverapp
     ports:
       - "8083"
-    command: ["java", "-jar", "/app/async-serverapp.jar"]
+      - "10992"
 
   async-receiver-pull:
     build: async-receiver-pull/
     image: async-receiver-pull
+    depends_on:
+      -  async-serverapp
     ports:
+      - "10991"
       - "8082"
-    command: ["java", "-jar", "/app/async-receiver.jar"]
+    links:
+      - async-serverapp
+#    command: ./wait-for-it.sh async-serverapp:8083 --timeout=2 --strict -- java -jar async-serverapp-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
   async-sender-pull:
     build: async-sender-pull/
     image: async-sender-pull
+    depends_on:
+      - async-receiver-pull
     ports:
+      - "10990"
       - "8084"
-    command: ["java", "-jar", "/app/async-sender.jar"]
+    links:
+      - async-receiver-pull
+#    command: ./wait-for-it.sh async-receiver-pull:8082 --timeout=2 --strict -- java -jar async-receiver-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
   async-clientapp:
     build: async-clientapp/
     image: async-clientapp
     depends_on:
-      - async-serverapp
-      - async-receiver-pull
       - async-sender-pull
     ports:
       - "8081"
-    command: ["java", "-jar", "/app/async-clientapp.jar"]
-
-  start_dependencies:
-    image: dadarek/wait-for-dependencies
-    depends_on:
-      - async-serverapp
-      - async-receiver-pull
+    links:
       - async-sender-pull
-    command: async-serverapp:10992 async-receiver-pull:10991 async-sender-pull:10990
+#    command: ./wait-for-it.sh async-sender-pull:8084 --timeout=2 --strict -- java -jar async-sender-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+#
+#  start_dependencies:
+#    image: dadarek/wait-for-dependencies
+#    depends_on:
+#      - async-serverapp
+#      - async-receiver-pull
+#      - async-sender-pull
+#    command: async-serverapp:10992 async-receiver-pull:10991 async-sender-pull:10990
