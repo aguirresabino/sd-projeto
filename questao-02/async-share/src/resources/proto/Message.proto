@@ -1,0 +1,31 @@
+syntax = "proto3";
+//option java_multiple_files = true;
+package grpc;
+
+// traffic messages
+message Id {
+    string id = 1;
+}
+
+message Message {
+    string id = 1;
+    string text = 2;
+}
+
+message MessageResult {
+    string id = 1;
+    string hash = 2;
+}
+
+// services
+service SenderPullService {
+    rpc sendMessage(Message) returns (MessageResult);
+}
+
+service ReceiverPullService {
+    rpc delivery(Message) returns (MessageResult);
+}
+
+service ServerAppService{
+    rpc print(Message) returns (MessageResult);
+}
