@@ -11,7 +11,7 @@ import java.rmi.registry.Registry;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException, AlreadyBoundException, InterruptedException {
+	public static void main(String[] args) throws IOException, InterruptedException {
 		System.out.println("Servidor inicializado");
 
 		//inicializar o serviço para server app

@@ -1,4 +1,4 @@
-FROM openjdk:11
+FROM openjdk:8
 
 COPY ./target/async-serverapp-0.0.1-SNAPSHOT-jar-with-dependencies.jar .
 

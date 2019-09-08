@@ -1,4 +1,4 @@
-package grpc;
+package ifpb.grpc;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
@@ -24,33 +24,33 @@ public final class ReceiverPullServiceGrpc {
 
   private ReceiverPullServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "grpc.ReceiverPullService";
+  public static final String SERVICE_NAME = "ifpb.grpc.ReceiverPullService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<grpc.MessageOuterClass.Message,
-      grpc.MessageOuterClass.MessageResult> getDeliveryMethod;
+  private static volatile io.grpc.MethodDescriptor<ifpb.grpc.Message,
+      ifpb.grpc.MessageResult> getDeliveryMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "delivery",
-      requestType = grpc.MessageOuterClass.Message.class,
-      responseType = grpc.MessageOuterClass.MessageResult.class,
+      requestType = ifpb.grpc.Message.class,
+      responseType = ifpb.grpc.MessageResult.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<grpc.MessageOuterClass.Message,
-      grpc.MessageOuterClass.MessageResult> getDeliveryMethod() {
-    io.grpc.MethodDescriptor<grpc.MessageOuterClass.Message, grpc.MessageOuterClass.MessageResult> getDeliveryMethod;
+  public static io.grpc.MethodDescriptor<ifpb.grpc.Message,
+      ifpb.grpc.MessageResult> getDeliveryMethod() {
+    io.grpc.MethodDescriptor<ifpb.grpc.Message, ifpb.grpc.MessageResult> getDeliveryMethod;
     if ((getDeliveryMethod = ReceiverPullServiceGrpc.getDeliveryMethod) == null) {
       synchronized (ReceiverPullServiceGrpc.class) {
         if ((getDeliveryMethod = ReceiverPullServiceGrpc.getDeliveryMethod) == null) {
           ReceiverPullServiceGrpc.getDeliveryMethod = getDeliveryMethod = 
-              io.grpc.MethodDescriptor.<grpc.MessageOuterClass.Message, grpc.MessageOuterClass.MessageResult>newBuilder()
+              io.grpc.MethodDescriptor.<ifpb.grpc.Message, ifpb.grpc.MessageResult>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "grpc.ReceiverPullService", "delivery"))
+                  "ifpb.grpc.ReceiverPullService", "delivery"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.MessageOuterClass.Message.getDefaultInstance()))
+                  ifpb.grpc.Message.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.MessageOuterClass.MessageResult.getDefaultInstance()))
+                  ifpb.grpc.MessageResult.getDefaultInstance()))
                   .setSchemaDescriptor(new ReceiverPullServiceMethodDescriptorSupplier("delivery"))
                   .build();
           }
@@ -88,8 +88,8 @@ public final class ReceiverPullServiceGrpc {
 
     /**
      */
-    public void delivery(grpc.MessageOuterClass.Message request,
-        io.grpc.stub.StreamObserver<grpc.MessageOuterClass.MessageResult> responseObserver) {
+    public void delivery(ifpb.grpc.Message request,
+        io.grpc.stub.StreamObserver<ifpb.grpc.MessageResult> responseObserver) {
       asyncUnimplementedUnaryCall(getDeliveryMethod(), responseObserver);
     }
 
@@ -99,8 +99,8 @@ public final class ReceiverPullServiceGrpc {
             getDeliveryMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                grpc.MessageOuterClass.Message,
-                grpc.MessageOuterClass.MessageResult>(
+                ifpb.grpc.Message,
+                ifpb.grpc.MessageResult>(
                   this, METHODID_DELIVERY)))
           .build();
     }
@@ -126,8 +126,8 @@ public final class ReceiverPullServiceGrpc {
 
     /**
      */
-    public void delivery(grpc.MessageOuterClass.Message request,
-        io.grpc.stub.StreamObserver<grpc.MessageOuterClass.MessageResult> responseObserver) {
+    public void delivery(ifpb.grpc.Message request,
+        io.grpc.stub.StreamObserver<ifpb.grpc.MessageResult> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getDeliveryMethod(), getCallOptions()), request, responseObserver);
     }
@@ -153,7 +153,7 @@ public final class ReceiverPullServiceGrpc {
 
     /**
      */
-    public grpc.MessageOuterClass.MessageResult delivery(grpc.MessageOuterClass.Message request) {
+    public ifpb.grpc.MessageResult delivery(ifpb.grpc.Message request) {
       return blockingUnaryCall(
           getChannel(), getDeliveryMethod(), getCallOptions(), request);
     }
@@ -179,8 +179,8 @@ public final class ReceiverPullServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<grpc.MessageOuterClass.MessageResult> delivery(
-        grpc.MessageOuterClass.Message request) {
+    public com.google.common.util.concurrent.ListenableFuture<ifpb.grpc.MessageResult> delivery(
+        ifpb.grpc.Message request) {
       return futureUnaryCall(
           getChannel().newCall(getDeliveryMethod(), getCallOptions()), request);
     }
@@ -206,8 +206,8 @@ public final class ReceiverPullServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_DELIVERY:
-          serviceImpl.delivery((grpc.MessageOuterClass.Message) request,
-              (io.grpc.stub.StreamObserver<grpc.MessageOuterClass.MessageResult>) responseObserver);
+          serviceImpl.delivery((ifpb.grpc.Message) request,
+              (io.grpc.stub.StreamObserver<ifpb.grpc.MessageResult>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -231,7 +231,7 @@ public final class ReceiverPullServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return grpc.MessageOuterClass.getDescriptor();
+      return ifpb.grpc.MessageOuterClass.getDescriptor();
     }
 
     @java.lang.Override

@@ -1,4 +1,4 @@
-package grpc;
+package ifpb.grpc;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
@@ -17,7 +17,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
  * <pre>
- * services
+ * unary services
  * </pre>
  */
 @javax.annotation.Generated(
@@ -27,33 +27,33 @@ public final class SenderPullServiceGrpc {
 
   private SenderPullServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "grpc.SenderPullService";
+  public static final String SERVICE_NAME = "ifpb.grpc.SenderPullService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<grpc.MessageOuterClass.Message,
-      grpc.MessageOuterClass.MessageResult> getSendMessageMethod;
+  private static volatile io.grpc.MethodDescriptor<ifpb.grpc.Message,
+      ifpb.grpc.MessageResult> getSendMessageMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "sendMessage",
-      requestType = grpc.MessageOuterClass.Message.class,
-      responseType = grpc.MessageOuterClass.MessageResult.class,
+      requestType = ifpb.grpc.Message.class,
+      responseType = ifpb.grpc.MessageResult.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<grpc.MessageOuterClass.Message,
-      grpc.MessageOuterClass.MessageResult> getSendMessageMethod() {
-    io.grpc.MethodDescriptor<grpc.MessageOuterClass.Message, grpc.MessageOuterClass.MessageResult> getSendMessageMethod;
+  public static io.grpc.MethodDescriptor<ifpb.grpc.Message,
+      ifpb.grpc.MessageResult> getSendMessageMethod() {
+    io.grpc.MethodDescriptor<ifpb.grpc.Message, ifpb.grpc.MessageResult> getSendMessageMethod;
     if ((getSendMessageMethod = SenderPullServiceGrpc.getSendMessageMethod) == null) {
       synchronized (SenderPullServiceGrpc.class) {
         if ((getSendMessageMethod = SenderPullServiceGrpc.getSendMessageMethod) == null) {
           SenderPullServiceGrpc.getSendMessageMethod = getSendMessageMethod = 
-              io.grpc.MethodDescriptor.<grpc.MessageOuterClass.Message, grpc.MessageOuterClass.MessageResult>newBuilder()
+              io.grpc.MethodDescriptor.<ifpb.grpc.Message, ifpb.grpc.MessageResult>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "grpc.SenderPullService", "sendMessage"))
+                  "ifpb.grpc.SenderPullService", "sendMessage"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.MessageOuterClass.Message.getDefaultInstance()))
+                  ifpb.grpc.Message.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.MessageOuterClass.MessageResult.getDefaultInstance()))
+                  ifpb.grpc.MessageResult.getDefaultInstance()))
                   .setSchemaDescriptor(new SenderPullServiceMethodDescriptorSupplier("sendMessage"))
                   .build();
           }
@@ -87,15 +87,15 @@ public final class SenderPullServiceGrpc {
 
   /**
    * <pre>
-   * services
+   * unary services
    * </pre>
    */
   public static abstract class SenderPullServiceImplBase implements io.grpc.BindableService {
 
     /**
      */
-    public void sendMessage(grpc.MessageOuterClass.Message request,
-        io.grpc.stub.StreamObserver<grpc.MessageOuterClass.MessageResult> responseObserver) {
+    public void sendMessage(ifpb.grpc.Message request,
+        io.grpc.stub.StreamObserver<ifpb.grpc.MessageResult> responseObserver) {
       asyncUnimplementedUnaryCall(getSendMessageMethod(), responseObserver);
     }
 
@@ -105,8 +105,8 @@ public final class SenderPullServiceGrpc {
             getSendMessageMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                grpc.MessageOuterClass.Message,
-                grpc.MessageOuterClass.MessageResult>(
+                ifpb.grpc.Message,
+                ifpb.grpc.MessageResult>(
                   this, METHODID_SEND_MESSAGE)))
           .build();
     }
@@ -114,7 +114,7 @@ public final class SenderPullServiceGrpc {
 
   /**
    * <pre>
-   * services
+   * unary services
    * </pre>
    */
   public static final class SenderPullServiceStub extends io.grpc.stub.AbstractStub<SenderPullServiceStub> {
@@ -135,8 +135,8 @@ public final class SenderPullServiceGrpc {
 
     /**
      */
-    public void sendMessage(grpc.MessageOuterClass.Message request,
-        io.grpc.stub.StreamObserver<grpc.MessageOuterClass.MessageResult> responseObserver) {
+    public void sendMessage(ifpb.grpc.Message request,
+        io.grpc.stub.StreamObserver<ifpb.grpc.MessageResult> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getSendMessageMethod(), getCallOptions()), request, responseObserver);
     }
@@ -144,7 +144,7 @@ public final class SenderPullServiceGrpc {
 
   /**
    * <pre>
-   * services
+   * unary services
    * </pre>
    */
   public static final class SenderPullServiceBlockingStub extends io.grpc.stub.AbstractStub<SenderPullServiceBlockingStub> {
@@ -165,7 +165,7 @@ public final class SenderPullServiceGrpc {
 
     /**
      */
-    public grpc.MessageOuterClass.MessageResult sendMessage(grpc.MessageOuterClass.Message request) {
+    public ifpb.grpc.MessageResult sendMessage(ifpb.grpc.Message request) {
       return blockingUnaryCall(
           getChannel(), getSendMessageMethod(), getCallOptions(), request);
     }
@@ -173,7 +173,7 @@ public final class SenderPullServiceGrpc {
 
   /**
    * <pre>
-   * services
+   * unary services
    * </pre>
    */
   public static final class SenderPullServiceFutureStub extends io.grpc.stub.AbstractStub<SenderPullServiceFutureStub> {
@@ -194,8 +194,8 @@ public final class SenderPullServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<grpc.MessageOuterClass.MessageResult> sendMessage(
-        grpc.MessageOuterClass.Message request) {
+    public com.google.common.util.concurrent.ListenableFuture<ifpb.grpc.MessageResult> sendMessage(
+        ifpb.grpc.Message request) {
       return futureUnaryCall(
           getChannel().newCall(getSendMessageMethod(), getCallOptions()), request);
     }
@@ -221,8 +221,8 @@ public final class SenderPullServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_SEND_MESSAGE:
-          serviceImpl.sendMessage((grpc.MessageOuterClass.Message) request,
-              (io.grpc.stub.StreamObserver<grpc.MessageOuterClass.MessageResult>) responseObserver);
+          serviceImpl.sendMessage((ifpb.grpc.Message) request,
+              (io.grpc.stub.StreamObserver<ifpb.grpc.MessageResult>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -246,7 +246,7 @@ public final class SenderPullServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return grpc.MessageOuterClass.getDescriptor();
+      return ifpb.grpc.MessageOuterClass.getDescriptor();
     }
 
     @java.lang.Override

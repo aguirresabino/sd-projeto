@@ -1,9 +1,10 @@
 package ifpb;
 
 import com.google.common.util.concurrent.ListenableFuture;
-import grpc.MessageOuterClass.*;
-import grpc.ReceiverPullServiceGrpc;
-import grpc.SenderPullServiceGrpc.SenderPullServiceImplBase;
+import ifpb.grpc.Message;
+import ifpb.grpc.MessageResult;
+import ifpb.grpc.ReceiverPullServiceGrpc;
+import ifpb.grpc.SenderPullServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
@@ -11,14 +12,14 @@ import io.grpc.stub.StreamObserver;
 import java.util.concurrent.ExecutionException;
 
 @SuppressWarnings("serial")
-public class SenderImpl extends SenderPullServiceImplBase {
+public class SenderImpl extends SenderPullServiceGrpc.SenderPullServiceImplBase {
 
 	private final ManagedChannel receiverChannel;
 	private ReceiverPullServiceGrpc.ReceiverPullServiceFutureStub receiverFutureStub;
 
 	public SenderImpl(){
 		this.receiverChannel = ManagedChannelBuilder
-				.forAddress("localhost", 10991)
+				.forAddress("async-receiver-pull", 10991)
 				.usePlaintext()
 				.build();
 	}

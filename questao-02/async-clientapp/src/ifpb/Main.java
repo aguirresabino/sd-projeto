@@ -1,18 +1,16 @@
 package ifpb;
 
 import com.google.common.util.concurrent.ListenableFuture;
-import grpc.MessageOuterClass.*;
-import grpc.SenderPullServiceGrpc.*;
+import ifpb.grpc.Message;
+import ifpb.grpc.MessageResult;
+import ifpb.grpc.SenderPullServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import java.util.concurrent.ExecutionException;
 
 public class Main {
 
-//    private static int cont;
-
-	private static void sendAndResultMessage(String id, String text, SenderPullServiceFutureStub sender) {
-
+	private static void sendAndResultMessage(String id, String text, SenderPullServiceGrpc.SenderPullServiceFutureStub sender) {
 		// construct traffic message
 		Message message = Message.newBuilder().setId(id).setText(text).build();
 
@@ -22,13 +20,11 @@ public class Main {
         MessageResult result = null;
         try {
             result = senderFuture.get();
-//            cont++;
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
 
         System.out.println("Recebido resultado para mensagem " + result.getId() + ": " + result.getHash());
 
@@ -52,17 +48,17 @@ public class Main {
 
 	}
 
-	public static void main(String[] args) throws InterruptedException, ExecutionException {
+	public static void main(String[] args) {
 		//log
 		System.out.println("Acionado o clientapp");
 
 		//recuperação do Sender
 		ManagedChannel channel = ManagedChannelBuilder
-				.forAddress("localhost", 10990)
+				.forAddress("async-sender-pull", 10990)
 				.usePlaintext()
 				.build();
 
-		SenderPullServiceFutureStub senderFutureStub = grpc.SenderPullServiceGrpc.newFutureStub(channel);
+		SenderPullServiceGrpc.SenderPullServiceFutureStub senderFutureStub = SenderPullServiceGrpc.newFutureStub(channel);
 
 		String id = "askjdlkasjd";
 		String text = "Hello World!";
@@ -73,12 +69,6 @@ public class Main {
 
 			sendAndResultMessage(ix, mx, senderFutureStub);
 		}
-
-//        while(true){
-//            if(cont==100){
-//                break;
-//            }
-//        }
 
 	}
 
