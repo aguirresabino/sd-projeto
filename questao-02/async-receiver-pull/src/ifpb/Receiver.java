@@ -19,7 +19,7 @@ public class Receiver extends ReceiverPullServiceGrpc.ReceiverPullServiceImplBas
 
 	protected Receiver() {
 		this.serverChannel = ManagedChannelBuilder
-				.forAddress("async-serverapp", 10992) //antes localhost
+				.forAddress("async-serverapp", 10992)
 				.usePlaintext()
 				.build();
 	}
