@@ -1,4 +1,4 @@
-package grpc;
+package ifpb.grpc;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
@@ -24,33 +24,33 @@ public final class ServerAppServiceGrpc {
 
   private ServerAppServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "grpc.ServerAppService";
+  public static final String SERVICE_NAME = "ifpb.grpc.ServerAppService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<grpc.MessageOuterClass.Message,
-      grpc.MessageOuterClass.MessageResult> getPrintMethod;
+  private static volatile io.grpc.MethodDescriptor<ifpb.grpc.Message,
+      ifpb.grpc.MessageResult> getPrintMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "print",
-      requestType = grpc.MessageOuterClass.Message.class,
-      responseType = grpc.MessageOuterClass.MessageResult.class,
+      requestType = ifpb.grpc.Message.class,
+      responseType = ifpb.grpc.MessageResult.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<grpc.MessageOuterClass.Message,
-      grpc.MessageOuterClass.MessageResult> getPrintMethod() {
-    io.grpc.MethodDescriptor<grpc.MessageOuterClass.Message, grpc.MessageOuterClass.MessageResult> getPrintMethod;
+  public static io.grpc.MethodDescriptor<ifpb.grpc.Message,
+      ifpb.grpc.MessageResult> getPrintMethod() {
+    io.grpc.MethodDescriptor<ifpb.grpc.Message, ifpb.grpc.MessageResult> getPrintMethod;
     if ((getPrintMethod = ServerAppServiceGrpc.getPrintMethod) == null) {
       synchronized (ServerAppServiceGrpc.class) {
         if ((getPrintMethod = ServerAppServiceGrpc.getPrintMethod) == null) {
           ServerAppServiceGrpc.getPrintMethod = getPrintMethod = 
-              io.grpc.MethodDescriptor.<grpc.MessageOuterClass.Message, grpc.MessageOuterClass.MessageResult>newBuilder()
+              io.grpc.MethodDescriptor.<ifpb.grpc.Message, ifpb.grpc.MessageResult>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "grpc.ServerAppService", "print"))
+                  "ifpb.grpc.ServerAppService", "print"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.MessageOuterClass.Message.getDefaultInstance()))
+                  ifpb.grpc.Message.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.MessageOuterClass.MessageResult.getDefaultInstance()))
+                  ifpb.grpc.MessageResult.getDefaultInstance()))
                   .setSchemaDescriptor(new ServerAppServiceMethodDescriptorSupplier("print"))
                   .build();
           }
@@ -88,8 +88,8 @@ public final class ServerAppServiceGrpc {
 
     /**
      */
-    public void print(grpc.MessageOuterClass.Message request,
-        io.grpc.stub.StreamObserver<grpc.MessageOuterClass.MessageResult> responseObserver) {
+    public void print(ifpb.grpc.Message request,
+        io.grpc.stub.StreamObserver<ifpb.grpc.MessageResult> responseObserver) {
       asyncUnimplementedUnaryCall(getPrintMethod(), responseObserver);
     }
 
@@ -99,8 +99,8 @@ public final class ServerAppServiceGrpc {
             getPrintMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                grpc.MessageOuterClass.Message,
-                grpc.MessageOuterClass.MessageResult>(
+                ifpb.grpc.Message,
+                ifpb.grpc.MessageResult>(
                   this, METHODID_PRINT)))
           .build();
     }
@@ -126,8 +126,8 @@ public final class ServerAppServiceGrpc {
 
     /**
      */
-    public void print(grpc.MessageOuterClass.Message request,
-        io.grpc.stub.StreamObserver<grpc.MessageOuterClass.MessageResult> responseObserver) {
+    public void print(ifpb.grpc.Message request,
+        io.grpc.stub.StreamObserver<ifpb.grpc.MessageResult> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getPrintMethod(), getCallOptions()), request, responseObserver);
     }
@@ -153,7 +153,7 @@ public final class ServerAppServiceGrpc {
 
     /**
      */
-    public grpc.MessageOuterClass.MessageResult print(grpc.MessageOuterClass.Message request) {
+    public ifpb.grpc.MessageResult print(ifpb.grpc.Message request) {
       return blockingUnaryCall(
           getChannel(), getPrintMethod(), getCallOptions(), request);
     }
@@ -179,8 +179,8 @@ public final class ServerAppServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<grpc.MessageOuterClass.MessageResult> print(
-        grpc.MessageOuterClass.Message request) {
+    public com.google.common.util.concurrent.ListenableFuture<ifpb.grpc.MessageResult> print(
+        ifpb.grpc.Message request) {
       return futureUnaryCall(
           getChannel().newCall(getPrintMethod(), getCallOptions()), request);
     }
@@ -206,8 +206,8 @@ public final class ServerAppServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_PRINT:
-          serviceImpl.print((grpc.MessageOuterClass.Message) request,
-              (io.grpc.stub.StreamObserver<grpc.MessageOuterClass.MessageResult>) responseObserver);
+          serviceImpl.print((ifpb.grpc.Message) request,
+              (io.grpc.stub.StreamObserver<ifpb.grpc.MessageResult>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -231,7 +231,7 @@ public final class ServerAppServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return grpc.MessageOuterClass.getDescriptor();
+      return ifpb.grpc.MessageOuterClass.getDescriptor();
     }
 
     @java.lang.Override

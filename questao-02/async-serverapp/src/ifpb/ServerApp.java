@@ -1,7 +1,8 @@
 package ifpb;
 
-import grpc.MessageOuterClass. *;
-import grpc.ServerAppServiceGrpc;
+import ifpb.grpc.Message;
+import ifpb.grpc.MessageResult;
+import ifpb.grpc.ServerAppServiceGrpc;
 import io.grpc.stub.StreamObserver;
 
 import java.math.BigInteger;
@@ -20,15 +21,14 @@ public class ServerApp extends ServerAppServiceGrpc.ServerAppServiceImplBase {
 			e.printStackTrace();
 		}
 
-		//
 		byte[] bhash = msd.digest(request.getText().getBytes());
 		BigInteger bi = new BigInteger(bhash);
-		//
+
 		MessageResult result = MessageResult.newBuilder()
 				.setId(request.getId()).setHash(bi.toString(16)).build();
-		//
+
 		System.out.println(request.getId() + " " + request.getText());
-		//
+
 		responseObserver.onNext(result);
 		responseObserver.onCompleted();
 	}

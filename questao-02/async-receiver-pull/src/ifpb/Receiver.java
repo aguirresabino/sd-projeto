@@ -1,9 +1,10 @@
 package ifpb;
 
 import com.google.common.util.concurrent.ListenableFuture;
-import grpc.MessageOuterClass. *;
-import grpc.ReceiverPullServiceGrpc;
-import grpc.ServerAppServiceGrpc;
+import ifpb.grpc.Message;
+import ifpb.grpc.MessageResult;
+import ifpb.grpc.ReceiverPullServiceGrpc;
+import ifpb.grpc.ServerAppServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
@@ -18,7 +19,7 @@ public class Receiver extends ReceiverPullServiceGrpc.ReceiverPullServiceImplBas
 
 	protected Receiver() {
 		this.serverChannel = ManagedChannelBuilder
-				.forAddress("localhost", 10992)
+				.forAddress("async-serverapp", 10992) //antes localhost
 				.usePlaintext()
 				.build();
 	}
@@ -30,6 +31,7 @@ public class Receiver extends ReceiverPullServiceGrpc.ReceiverPullServiceImplBas
 		serverFutureStub = ServerAppServiceGrpc.newFutureStub(serverChannel);
 		ListenableFuture<MessageResult> serverFuture = serverFutureStub.print(request);
 		try {
+			System.out.println("Adicionando uma mensagem de resposta: " + request.getId());
 			responseObserver.onNext(serverFuture.get());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
