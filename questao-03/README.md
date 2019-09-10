@@ -23,7 +23,7 @@ Em um sistema de push/notification, um cliente realiza o seu registro no servido
 
 Nesta solução, toda comunicação existente entre os nós é feita no formato requisição-resposta assíncrona, além disso, cada mensagem enviada e recebida por um nó será persistida para que seja implementada a garantia de entrega.
 
-Para entender o funcionamento desta arquitetura, veja o que podem ser pontos críticos em uma arquitetura de sistemas distribuídos:
+Para entender o funcionamento desta arquitetura, veja o que podem ser pontos críticos:
 
  - __O servidor cai antes de receber uma requisição enviada pelo cliente__
 
@@ -34,3 +34,7 @@ Para entender o funcionamento desta arquitetura, veja o que podem ser pontos cr�
   - __O servidor cai após receber uma requisição, mas não consegue enviar a confirmação__
   
 Assim como a requisição, a resposta retornada por cada nó da arquitetura será persistida. E da mesma forma, também será definida uma rotina para verificar se existem respostas de confirmação que não foram entregues. Neste caso, o cliente como não recebeu a confirmação, ficará tentando enviar a requisição novamente e isto poderá gerar repetições  no servidor. Dessa forma, ele precisará negar requisições já recebidas, verificando sua base de dados.
+
+- __O cliente envia uma requisição, o servidor receber e envia a confirmação, mas o cliente cai antes de receber__
+
+Neste cenário, o servidro já enviou a resposta, logo ele não executará nenhuma rotina sobre a mesma para enviá-la novamente. No entanto, como o cliente não recebeu a confirmação, o mesmo irá enviar novas requisições com a mesma mensagem, neste momento, o servidor deve verificar se existe alguma resposta para esta requisição e enviá-la.
