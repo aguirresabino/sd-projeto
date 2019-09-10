@@ -39,3 +39,13 @@ services:
       - "8081"
     links:
       - async-sender-pull
+
+  async-clientapp1:
+    build: async-clientapp/
+    image: async-clientapp
+    depends_on:
+      - async-sender-pull
+    ports:
+      - "8081"
+    links:
+      - async-sender-pull
